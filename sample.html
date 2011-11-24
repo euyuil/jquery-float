@@ -4,19 +4,26 @@
 <head>
 	<title>jFloat Samples</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script type="text/javascript" src="jquery-1.7.1.js"></script>
-	<script type="text/javascript" src="jfloat-0.1.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<script type="text/javascript" src="jfloat-devel.js"></script>
 </head>
 <body>
-	<div id="floatImage-1" class="floatImage">
+	<div class="crossFloat">
 		<img src="image.png" alt="Image" />
 	</div>
-	<div id="floatImage-2" class="floatImage">
+	<div class="crossFloat">
+		<img src="image.png" alt="Image" />
+	</div>
+	<div class="topLeft">
+		<img src="image.png" alt="Image" />
+	</div>
+	<div class="bottomRight">
 		<img src="image.png" alt="Image" />
 	</div>
 	<script type="text/javascript">
-		$("#floatImage-1").floatImage();
-		$("#floatImage-2").floatImage({ x: 100, y: 100 });
+		$(".crossFloat").crossFloat();
+		$(".topLeft").stickFloat({ x: 0.0, y: 0.0 });
+		$(".bottomRight").stickFloat({ x: 1.0, y: 1.0 });
 	</script>
 	<p>Hello hello hello hello hello hello hello hello hello hello hello hello hello
 		hello hello hello hello hello hello hello hello hello hello hello hello hello</p>

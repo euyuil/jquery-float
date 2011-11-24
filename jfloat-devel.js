@@ -17,7 +17,7 @@
 	 * @param delay The delay time for next move. The larger the slower.
 	 */
 
-	jQuery.fn.floatImage = function(options) {
+	jQuery.fn.crossFloat = function(options) {
 
 		var obj = this;
 
@@ -36,9 +36,9 @@
 
 		function changeOffset() {
 
-			var L = T = 0;
-			var R = $(window).width() - obj.outerWidth();
-			var B = $(window).height() - obj.outerHeight();
+			var l = t = 0;
+			var w = $(window).width() - obj.outerWidth();
+			var h = $(window).height() - obj.outerHeight();
 
 			obj.css({ left: x + document.body.scrollLeft });
 			obj.css({ top: y + document.body.scrollTop });
@@ -46,10 +46,10 @@
 			x = x + settings.step * dx;
 			y = y + settings.step * dy;
 
-			if (x < L) { dx = 1; x = L; }
-			if (x > R) { dx = -1; x = R; }
-			if (y < T) { dy = 1; y = T; }
-			if (y > B) { dy = -1; y = B; }
+			if (x < l) { dx = 1; x = l; }
+			if (x > w) { dx = -1; x = w; }
+			if (y < t) { dy = 1; y = t; }
+			if (y > h) { dy = -1; y = h; }
 
 		}
 
@@ -61,6 +61,38 @@
 		function() {
 			startFloating = setInterval(changeOffset, settings.delay);
 		});
-	}
+	};
+
+	jQuery.fn.stickFloat = function(options) {
+
+		var obj = this;
+
+		var settings = { x: 0.0, y: 0.0 };
+		jQuery.extend(settings, options);
+
+		obj.css({ position: "absolute", cursor: "pointer" });
+
+		function changeSticky() {
+
+			var l = t = 0;
+			var w = $(window).width() - obj.outerWidth();
+			var h = $(window).height() - obj.outerHeight();
+
+			var x = w * settings.x, y = h * settings.y;
+
+			obj.css({ left: x + document.body.scrollLeft });
+			obj.css({ top: y + document.body.scrollTop });
+
+		}
+
+		var startSticky = setInterval(changeSticky, settings.delay);
+
+		obj.hover(function() {
+			clearInterval(startSticky);
+		},
+		function() {
+			startSticky = setInterval(changeSticky, settings.delay);
+		});
+	};
 
 })(jQuery);
