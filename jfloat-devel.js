@@ -32,7 +32,7 @@
 			settings.delay = 12 + Math.floor(Math.random() * 7);
 		}
 
-		obj.css({ position: "absolute", cursor: "pointer" });
+		obj.css({ position: "absolute", cursor: "pointer", display: "block" });
 
 		function changeOffset() {
 
@@ -70,7 +70,7 @@
 		var settings = { x: 0.0, y: 0.0 };
 		jQuery.extend(settings, options);
 
-		obj.css({ position: "absolute", cursor: "pointer" });
+		obj.css({ position: "absolute", cursor: "pointer", display: "block" });
 
 		function changeSticky() {
 
